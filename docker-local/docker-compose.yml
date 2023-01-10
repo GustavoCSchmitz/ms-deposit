@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  deposit.api:
+    container_name: deposit.api
+    ports:
+      - "8082:8082"
+    restart: "no"
+    build:
+      context: ../
+      dockerfile:  Dockerfile
+    networks:
+      - deposit-network
+    env_file:
+      - ../.env
+
+volumes:
+  data: {}
+
+networks:
+  deposit-network:
+    driver: bridge
